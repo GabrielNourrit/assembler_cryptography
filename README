@@ -1,4 +1,56 @@
-JC2 <number> <world>
-vigenere <keyworld> <world>
+########################################
+##############QUICK START###############
+########################################
 
-use ./install in order to have binary file
+use ./installation in order to have binary file
+
+jules2 <number> <world>
+vigenere2 <keyworld> <world>
+
+#######################################
+#############DETAILS###################
+#######################################
+
+Caesar cypher :
+
+The principle of the Julius Caesar coding is to shift each letter of the text by a constant value: the key is an integer giving the distance between the letter to be coded and its coding. For example, if the key is 5, we will write the letter a by f, b by g, c by h, ..., z by e. The first program requested therefore takes on its command line any integer and the string to be encoded (containing only lowercase letters), and displays the coded text on the standard output. For example:
+
+prompt> jules 5 abcd
+fghi
+prompt> jules 13 abcd
+nopq
+prompt> jules 13 nopq
+abed
+prompt> jules 1542 abcd
+ijkl
+prompt> jules 8 abcd
+ijkl
+
+You will notice on the execution examples that the key is any positive integer.
+
+Vigenère Cypher :
+
+The problem of Julius Caesar's coding is that there are only 25 possible codings, which makes the confidentiality very relative. The French diplomat Blaise de Vigenère described in the 16th century an encryption method using a key that the sender and the recipient of the coded message must share. The principle is that each character of the key gives the offset to use to encode the corresponding letter of the message: the character a gives the offset 0, the character b gives the offset 1, ..., the character z gives the offset 25.
+
+For example, if the key is 'info', the encoding of 'assembleur' word is ifxsuoqsce:
+
+ 	a s s e m b l e u r
+  +     i n f o i n f o i n
+        -------------------
+        i f x s u o q s c e
+
+Note that if the key is shorter than the message, it is repeated as many times as necessary. We also note that a Julius Caesar encoding with the key N is a Vigenère encoding with the key 'a' + N ...
+
+but we do not stop there, the message can contain any character, lowercase, uppercase, punctuation, digit, ... Only the letters are coded, the capital letters are transformed into lowercase, and a continuation of no -letters is replaced by a dot. So, we would have the following behavior:
+
+prompt> vigenere2 info assembleur
+ifxsuoqsce
+prompt> vigenere2 info ASSEMBLEUR
+ifxsuoqsce
+prompt> vigenere2 info 'A   sS45684:::EmB_____lEU!!!!5848R'
+i.fx.suo.qsc.e
+
+You must of course enclose the string to be encoded with single quotes if it contains characters that have a meaning for bash
+
+
+

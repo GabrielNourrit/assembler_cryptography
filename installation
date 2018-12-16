@@ -1,0 +1,31 @@
+#!/bin/bash
+
+clear
+echo -e "\n\n Appuyez sur une touche pour voir la compilation du module atoi"
+read a
+as -a --gstabs modules/atoi.s -o atoi.o
+
+
+echo -e "\n\n Appuyez sur une touche pour voir la compilation du module affchar"
+read a
+clear
+as -a --gstabs modules/affchar.s -o affchar.o
+
+echo -e "\n\n Appuyez sur une touche pour voir la compilation de jules2"
+read a
+clear
+as -a --gstabs jules2.s -o jules2.o
+ld -e debut jules2.o atoi.o affchar.o -o jules2
+
+echo -e "\n\n Appuyez sur une touche pour voir la compilation de vigenere2"
+read a
+clear
+as -a --gstabs vigenere2.s -o vigenere2.o
+ld -e debut vigenere2.o affchar.o -o vigenere2
+
+echo -e "\n Appuyez sur une touche pour terminer"
+read a
+
+rm *.o
+clear
+
