@@ -1,0 +1,32 @@
+#!/bin/bash
+
+
+as -a --gstabs Q1.s -o Q1.o
+echo -e "\n Appuyez sur une touche pour la prochaine compilation"
+read a
+
+as -a --gstabs affchar.s -o affchar.o
+echo -e "\n Appuyez sur une touche pour la prochaine compilation"
+read a
+
+as -a --gstabs JC1.s -o JC1.o
+ld -e debut JC1.o Q1.o affchar.o -o JC
+
+echo -e "\n Appuyez sur une touche pour la prochaine compilation"
+read a
+
+as -a --gstabs JC2.s -o JC2.o
+ld -e debut JC2.o Q1.o affchar.o -o JC2
+
+echo -e "\n Appuyez sur une touche pour la prochaine compilation"
+read a
+
+as -a --gstabs vigenere.s -o vigenere.o
+ld -e debut_programme vigenere.o affchar.o -o vigenere
+
+echo -e "\n Appuyez sur une touche pour terminer"
+read a
+
+rm *~ *.o
+clear
+

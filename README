@@ -1,0 +1,4 @@
+JC2 <number> <world>
+vigenere <keyworld> <world>
+
+use ./install in order to have binary file
